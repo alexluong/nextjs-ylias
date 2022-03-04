@@ -1,5 +1,5 @@
-import { useRouter } from "next/router";
 import { fetchChannel } from "../../libs/channels/fetchChannel";
+import { ChannelHeroSection } from "../../components/channel-hero-section";
 
 export async function getServerSideProps(context) {
   const channelId = context.params.channelId;
@@ -12,13 +12,9 @@ export async function getServerSideProps(context) {
 }
 
 export default function Channel(props) {
-  const router = useRouter();
-
   return (
     <div>
-      <p>
-        Channel: {router.query.channelId}: {props.channel?.channelName}
-      </p>
+      <ChannelHeroSection channel={props.channel} />
     </div>
   );
 }
